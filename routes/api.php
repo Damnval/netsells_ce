@@ -23,8 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // e.g. Route::resource('integers', IntegerController::class);
 
 /**
- * will get a list of the recent converted integers
- * since there were no specs of how recent it was, will use 5 minuts ago
+ * will get all list of the recent converted integers
  */
 Route::get('integers-recent', [IntegerController::class, 'IntergerRecent']);
 /**

@@ -15,9 +15,9 @@ class IntegerResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'number' => $this->number,
             'roman_equivalent' => $this->roman_equivalent,
-            'updated_at' => $this->updated_at
         ];
     }
 }
