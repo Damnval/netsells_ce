@@ -12,14 +12,20 @@ use App\Services\IntegerService;
 
 class IntegerController extends Controller
 {
-    public function __construct(IntegerService $intergerService)
+    /**
+     * Instantiate a service in the constructor
+     *
+     *
+     * @param IntegerService $integerService
+     */
+    public function __construct(IntegerService $integerService)
     {
-        $this->intergerService = $intergerService;
+        $this->integerService = $integerService;
     }
 
     public function IntergerRecent()
     {
-        $integers = $this->intergerService->getRecentlyAddedIntergers();
+        $integers = $this->integerService->getRecentlyAddedIntergers();
 
         return new IntegerCollection($integers);
     }
@@ -31,7 +37,7 @@ class IntegerController extends Controller
         try {
             // Will return only validated data
             $validated = $request->validated();
-            $song = $this->intergerService->storeInteger($validated);
+            $song = $this->integerService->storeInteger($validated);
         } catch (Exception $e) {
             DB::rollBack();
             return 'error: ' . $e->getMessage();
@@ -43,7 +49,6 @@ class IntegerController extends Controller
 
     public function getTopTen()
     {
-        $integers = $this->intergerService->getTopTen();
-        return new IntegerTopTenCollection($integers);
+        return new IntegerTopTenCollection($this->integerService->getTopTen());
     }
 }

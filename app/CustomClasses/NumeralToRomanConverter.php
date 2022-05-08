@@ -34,6 +34,7 @@ class NumeralToRomanConverter implements RomanConversionInterface
                 }
             }
         }
+
         return $returnValue;
     }
 }

@@ -6,7 +6,7 @@ interface RomanConversionInterface
 {
     /**
      * @param integer $number
-     * @return string
+     * @return integer
      */
     public function convertToRomans(int $number): string;
 }
