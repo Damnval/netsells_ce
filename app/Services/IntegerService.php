@@ -13,7 +13,8 @@ class IntegerService implements IntegerServiceInterface
 {
     /**
      * Instantiate a service in the constructor
-     * Bind interface to a service
+     * Implement Dependency Inversion by
+     * Binding interface to a service in appServiceProvider
      *
      * @param RomanConversionInterface $numeralToRomanConverter
      */
