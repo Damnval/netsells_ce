@@ -23,6 +23,12 @@ class IntegerController extends Controller
         $this->integerService = $integerService;
     }
 
+    /**
+     * Get list of recent saved integers
+     * For now it gets order by decs
+     *
+     * @return App\Http\Resources\IntegerCollection
+     */
     public function IntergerRecent()
     {
         $integers = $this->integerService->getRecentlyAddedIntergers();
@@ -30,6 +36,12 @@ class IntegerController extends Controller
         return new IntegerCollection($integers);
     }
 
+    /**
+     * Will convert an integer as roman and save it in db
+     *
+     * @param IntegerStoreRequest $request
+     * @return App\Http\Requests\IntegerStoreRequest
+     */
     public function store(IntegerStoreRequest $request)
     {
         DB::beginTransaction();
@@ -47,6 +59,11 @@ class IntegerController extends Controller
         return new IntegerResource($song);
     }
 
+    /**
+     * Will get the most top ten saved/converted integer
+     *
+     * @return App\Http\Resources\IntegerTopTenCollection
+     */
     public function getTopTen()
     {
         return new IntegerTopTenCollection($this->integerService->getTopTen());
